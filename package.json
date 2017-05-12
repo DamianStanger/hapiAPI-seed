@@ -1,0 +1,35 @@
+{
+  "name": "hapi-seed",
+  "version": "1.0.0",
+  "description": "a small seed web project to demo hapi with linting and testing baked in",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "files": [
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "devDependencies": {
+    "code": "^4.0.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-eslint": "^19.0.0",
+    "grunt-newer": "^1.3.0",
+    "grunt-shell": "^1.3.0",
+    "lab": "^13.0.1",
+    "load-grunt-tasks": "^3.5.0",
+    "time-grunt": "^1.3.0"
+  },
+  "dependencies": {
+    "good": "^7.1.0",
+    "good-console": "^6.4.0",
+    "good-squeeze": "^5.0.2",
+    "hapi": "^16.1.1"
+  }
+}

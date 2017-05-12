@@ -1,0 +1,7 @@
+node_modules
+.tmp
+.idea
+.sass-cache
+.eslintcache
+npm-debug.log
+coverage.html
