@@ -2,9 +2,9 @@
 
 function getCustomArgument(argument) {
   const argumentsx = process.argv;
-  for (const arg in argumentsx) {
-    if (arg.split("=")[0] === argument) {
-      return arg.split("=")[1];
+  for (let i = 0; i < argumentsx.length; i++) {
+    if (argumentsx[i].split("=")[0] === argument) {
+      return argumentsx[i].split("=")[1];
     }
   }
   return null;
