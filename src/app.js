@@ -1,6 +1,6 @@
 const Hapi = require("hapi");
 const internals = require("./internals");
-const routes = require("./routes");
+const routes = require("./routes/indexRoutes");
 
 const server = new Hapi.Server();
 server.connection({"port": internals.http.public.port, "labels": "public"});

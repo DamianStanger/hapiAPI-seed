@@ -11,17 +11,17 @@ function getCustomArgument(argument) {
 }
 
 function getPortFromNodeArgs() {
-  return getCustomArgument("port");
+  return getCustomArgument("http.public.port");
 }
 
-function getLogLevelFromArgs() {
-  return getCustomArgument("loglevel");
+function getLogLevelsFromArgs() {
+  return getCustomArgument("logging.levels");
 }
 
 
 
-const port = parseInt(process.env.PORT || getPortFromNodeArgs() || 1337, 10);
-const logLevel = process.env.LOGLEVEL || getLogLevelFromArgs() || "debug";
+const port = parseInt(process.env.HAPIAPI_HTTPPUBLICPORT || getPortFromNodeArgs() || 1337, 10);
+const logLevels = (process.env.HAPIAPI_LOGGINGLEVELS || getLogLevelsFromArgs() || "debug,info,warn,error,fatal").split(",");
 
 const internals = {
   "http": {
@@ -30,7 +30,7 @@ const internals = {
     }
   },
   "logging": {
-    "levels": logLevel
+    "levels": logLevels
   }};
 
 module.exports = internals;
