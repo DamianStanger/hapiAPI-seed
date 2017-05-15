@@ -43,6 +43,7 @@ function setEnvironmentVariables() {
   process.env.HAPIAPI_LOGGINGLEVELS = "warn,error,fatal";
 }
 function removeEnvironmentVariables() {
+  delete process.env["PORT"];
   delete process.env["HAPIAPI_HTTPPUBLICPORT"];
   delete process.env["HAPIAPI_LOGGINGLEVELS"];
 }
@@ -52,8 +53,16 @@ function removeEnvironmentVariables() {
 describe("internals.js => ", () => {
 
   describe("When no environment variables and no node parameters are specified => ", () => {
+
+    before(done => {
+      removeEnvironmentVariables();
+      removeNodeParameters();
+      resetTheInternalsModuleInTheRequiresCache();
+      done();
+    });
+
     it("http public port should be taken from default value", done => {
-      expect(internals.http.public.port).to.equal(80);
+      expect(internals.http.public.port).to.equal(1337);
       done();
     });
 
