@@ -4,7 +4,8 @@
   "description": "a small seed web project to demo hapi with linting and testing baked in",
   "main": "src/app.js",
   "engines": {
-    "node": "6.10.3"
+    "node": "6.10.0",
+    "npm": "3.10.10"
   },
   "scripts": {
     "start": "node src/app.js",
