@@ -11,7 +11,8 @@ module.exports = function (grunt) {
 
     "shell": {
       "lab": {
-        "command": "./node_modules/.bin/lab --verbose --colors -I regeneratorRuntime,Observable,__core-js_shared__,core,System,_babelPolyfill,asap -S -r console -o stdout -r html -o coverage.html 'test'"
+        "command": "./node_modules/.bin/lab --verbose --colors -S -r console -o stdout -r html -o coverage.html 'test'"
+        // "command": "./node_modules/.bin/lab --verbose --colors -I regeneratorRuntime,Observable,__core-js_shared__,core,System,_babelPolyfill,asap -S -r console -o stdout -r html -o coverage.html 'test'"
       }
     },
 
