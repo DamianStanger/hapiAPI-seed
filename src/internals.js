@@ -20,7 +20,7 @@ function getLogLevelsFromArgs() {
 
 
 
-const port = parseInt(getPortFromNodeArgs() || process.env.HAPIAPI_HTTPPUBLICPORT || 1337, 10);
+const port = parseInt(getPortFromNodeArgs() || process.env.HAPIAPI_HTTPPUBLICPORT || 80, 10);
 const logLevels = (getLogLevelsFromArgs() || process.env.HAPIAPI_LOGGINGLEVELS || "debug,info,warn,error,fatal").split(",");
 
 const internals = {

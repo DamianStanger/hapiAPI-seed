@@ -27,7 +27,7 @@ function removeArrayElement(array, element) {
 }
 
 
-const HTTPPUBLICPORT = "http.public.port=8008";
+const HTTPPUBLICPORT = "http.public.port=1111";
 const LOGGINGLEVELS = "logging.levels=info,warn,error,fatal";
 function setNodeParameters() {
   process.argv.push(HTTPPUBLICPORT);
@@ -39,7 +39,7 @@ function removeNodeParameters() {
 }
 
 function setEnvironmentVariables() {
-  process.env.HAPIAPI_HTTPPUBLICPORT = "80";
+  process.env.HAPIAPI_HTTPPUBLICPORT = "2222";
   process.env.HAPIAPI_LOGGINGLEVELS = "warn,error,fatal";
 }
 function removeEnvironmentVariables() {
@@ -53,7 +53,7 @@ describe("internals.js => ", () => {
 
   describe("When no environment variables and no node parameters are specified => ", () => {
     it("http public port should be taken from default value", done => {
-      expect(internals.http.public.port).to.equal(1337);
+      expect(internals.http.public.port).to.equal(80);
       done();
     });
 
@@ -79,7 +79,7 @@ describe("internals.js => ", () => {
     });
 
     it("http public port should be taken from node arguments", done => {
-      expect(internals.http.public.port).to.equal(8008);
+      expect(internals.http.public.port).to.equal(1111);
       done();
     });
 
@@ -105,7 +105,7 @@ describe("internals.js => ", () => {
     });
 
     it("http public port should be taken from env variables", done => {
-      expect(internals.http.public.port).to.equal(80);
+      expect(internals.http.public.port).to.equal(2222);
       done();
     });
 
@@ -134,7 +134,7 @@ describe("internals.js => ", () => {
     });
 
     it("http public port should be taken from node arguments", done => {
-      expect(internals.http.public.port).to.equal(8008);
+      expect(internals.http.public.port).to.equal(1111);
       done();
     });
 

@@ -10,7 +10,7 @@ const {describe, it} = lab;
 describe("end to end, index page => ", () =>
   it("returns the site root", done => {
     const request = {"url": "/"};
-    const expectedJsonObj = {"base_url": "http://localhost.localdomain:1337", "greetings_url": "http://localhost.localdomain:1337/greetings", "documentation_url": "http://docs.hapiseed.apiary.io/"};
+    const expectedJsonObj = {"base_url": "http://localhost.localdomain:80", "greetings_url": "http://localhost.localdomain:80/greetings", "documentation_url": "http://docs.hapiseed.apiary.io/"};
 
     serverFactory((error, server) => {
       expect(error).to.be.null();
