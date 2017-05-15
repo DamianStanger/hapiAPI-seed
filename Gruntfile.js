@@ -11,10 +11,7 @@ module.exports = function (grunt) {
 
     "shell": {
       "lab": {
-        "command": "./node_modules/.bin/lab -I regeneratorRuntime,Observable,__core-js_shared__,core,System,_babelPolyfill,asap -S -r console -o stdout -r html -o coverage.html 'test'"
-      },
-      "labTeamCity": {
-        "command": "./node_modules/.bin/lab -I regeneratorRuntime,Observable,__core-js_shared__,core,System,_babelPolyfill,asap -S -r './node_modules/lab-teamcity-reporter/src/teamcity.js' -o stdout -r html -o coverage.html 'test'"
+        "command": "./node_modules/.bin/lab --verbose --colors -I regeneratorRuntime,Observable,__core-js_shared__,core,System,_babelPolyfill,asap -S -r console -o stdout -r html -o coverage.html 'test'"
       }
     },
 
