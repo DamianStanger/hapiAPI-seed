@@ -2,7 +2,7 @@
 /* eslint-disable prefer-reflect*/
 /* eslint-disable dot-notation*/
 
-const internalsModuleName = "../src/internals";
+const internalsModuleName = "../../src/internals";
 let internals = require(internalsModuleName);
 
 const Lab = require("lab");

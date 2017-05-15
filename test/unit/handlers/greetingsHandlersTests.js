@@ -1,4 +1,4 @@
-const greetingsHandlers = require("../../src/handlers/greetingsHandlers");
+const greetingsHandlers = require("../../../src/handlers/greetingsHandlers");
 
 const Lab = require("lab");
 const Code = require("code");
