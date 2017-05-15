@@ -14,7 +14,7 @@ describe("end to end, index page => ", () =>
 
     serverFactory((error, server) => {
       expect(error).to.be.null();
-      server.inject(request, (response) => {
+      server.inject(request, response => {
         expect(response).to.be.a.object();
         expect(response.statusCode).to.equal(200);
         expect(JSON.parse(response.payload)).to.equal(expectedJsonObj);
