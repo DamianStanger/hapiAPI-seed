@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node src/app.js",
-    "test": "grunt test"
+    "test": "grunt test; ./node_modules/dredd/bin/dredd src/hapiseed-blueprint.apib http://localhost:1337"
   },
   "files": [
     "src"
@@ -29,7 +29,8 @@
     "grunt-shell": "^1.3.0",
     "lab": "^13.0.1",
     "load-grunt-tasks": "^3.5.0",
-    "time-grunt": "^1.3.0"
+    "time-grunt": "^1.3.0",
+    "dredd": "^3.4.5"
   },
   "dependencies": {
     "good": "^7.1.0",

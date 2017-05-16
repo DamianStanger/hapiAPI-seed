@@ -13,6 +13,9 @@ module.exports = function (grunt) {
       "lab": {
         "command": "./node_modules/.bin/lab --verbose --colors -S -r console -o stdout -r html -o coverage.html 'test'"
         // "command": "./node_modules/.bin/lab --verbose --colors -I regeneratorRuntime,Observable,__core-js_shared__,core,System,_babelPolyfill,asap -S -r console -o stdout -r html -o coverage.html 'test'"
+      },
+      "dredd": {
+        "command": "./node_modules/dredd/bin/dredd src/hapiseed-blueprint.apib http://localhost:1337"
       }
     },
 
@@ -64,4 +67,8 @@ module.exports = function (grunt) {
     "shell:lab"
   ]);
 
+  grunt.registerTask("testAll", [
+    "shell:lab",
+    "shell:dredd"
+  ]);
 };

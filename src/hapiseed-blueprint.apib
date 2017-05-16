@@ -1,5 +1,4 @@
 FORMAT: 1A
-HOST: http://localhost:1337/
 
 # Polls API
 
@@ -9,7 +8,7 @@ A simple example of a REST API written in node with hapi
 
 ### List All Endpoints [GET]
 
-+ Response 200 (application/json)
++ Response 200 (application/json; charset=utf-8)
 
         {
             "base_url": "http://localhost:1337",
@@ -21,7 +20,7 @@ A simple example of a REST API written in node with hapi
 
 ### List All Greetings [GET]
 
-+ Response 200 (application/json)
++ Response 200 (application/json; charset=utf-8)
 
         [
             {
@@ -36,60 +35,26 @@ A simple example of a REST API written in node with hapi
             }
         ]
 
-### Create a New Question [POST]
+## View Single Greeting [/greetings/en]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+### View Single Greeting [GET]
 
-+ Request (application/json)
-
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
-
-+ Response 201 (application/json)
-
-    + Headers
-
-            Location: /questions/2
-
-    + Body
-
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
-
-## View Greetings [/greetings/language]
-
-### View Greetings [GET]
-
-+ Response 200 (application/json)
++ Response 200 (application/json; charset=utf-8)
 
         {
             "language": "en",
             "greeting": "Hi there",
             "url": "http://localhost:1337/greetings/en"
+        }
+        
+## Route Not Found [/foobar]
+
+### Get Request [GET]
+
++ Response 404 (application/json; charset=utf-8)
+
+        {
+            "statusCode": 404,
+            "error": "Not Found",
+            "documentation_url":"http://docs.hapiseed.apiary.io/"
         }
