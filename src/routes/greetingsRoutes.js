@@ -2,10 +2,16 @@ const greetingsHandlers = require("../handlers/greetingsHandlers");
 const greetingsRoot = "/greetings";
 
 
-const greetingsRoute = {
+const greetingsRouteGet = {
   "method": "GET",
   "path": greetingsRoot,
   "handler": greetingsHandlers.getGreetings
+};
+
+const greetingsRoutePost = {
+  "method": "POST",
+  "path": greetingsRoot,
+  "handler": greetingsHandlers.setGreetings
 };
 
 const greetingsLanguageRoute = {
@@ -16,7 +22,8 @@ const greetingsLanguageRoute = {
 
 
 const routes = [
-  greetingsRoute,
+  greetingsRouteGet,
+  greetingsRoutePost,
   greetingsLanguageRoute
 ];
 
