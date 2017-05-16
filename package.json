@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node src/app.js",
-    "test": "grunt test; ./node_modules/dredd/bin/dredd src/hapiseed-blueprint.apib http://localhost:1337"
+    "test": "grunt"
   },
   "files": [
     "src"

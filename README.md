@@ -10,16 +10,24 @@ based node api. Grunt tasks are configured to run linting and tests (Lab and Dre
 ### Install grunt on your system 
 `npm install -g grunt grunt-cli`
 
-### Run linting and unit/e2e tests 
+### Run linting and all tests 
 `grunt`
 
 ### Run it! 
 `node src/app.js`
 `grunt start`
 
+### Environment Variables
+`export HAPIAPI_HTTPPUBLICPORT=8888`
+`export HAPIAPI_LOGGINGLEVELS=warn,error,fatal`
+
+### Node command line options (node arguments will trump env variables)
+`node src/app.js http.public.port=8888`
+`node src/app.js logging.levels=warn,error,fatal`
+
 ## Docs
 API documentation can be found in the blueprint file `hapiseed-blueprint.apib`
-and can be found online at http://hapiseed.apiary.io
+and can be found online at (http://hapiseed.apiary.io)
 
 ## Tests
 There are 3 levels of testing within the project
