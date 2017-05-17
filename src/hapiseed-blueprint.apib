@@ -35,18 +35,49 @@ A simple example of a REST API written in node with hapi
             }
         ]
 
-## View Single Greeting [/greetings/en]
+### create a greeting [POST]
+
++ Request (application/json)
+
+        {
+            "language": "us",
+            "greeting": "Howdy there!"
+        }
+
++ Response 202 (application/json; charset=utf-8)
+
+        {
+            "language": "us",
+            "greeting": "Howdy there!",
+            "url": "http://localhost:1337/greetings/us"
+        }
+
+## View Single Greeting [/greetings/{language}]
 
 ### View Single Greeting [GET]
 
-+ Response 200 (application/json; charset=utf-8)
++ Parameters
+    + language: us (required)
++ Response 200 (application/json; charset=utf-8) 
+ 
+        {
+            "language": "us",
+            "greeting": "Howdy there!",
+            "url": "http://localhost:1337/greetings/us"
+        }
+
+### Greeting not found [GET]
+
++ Parameters
+    + language: foobar (required)
++ Response 404 (application/json; charset=utf-8)  
 
         {
-            "language": "en",
-            "greeting": "Hi there",
-            "url": "http://localhost:1337/greetings/en"
-        }
-        
+            "statusCode": 404,
+            "error": "Not Found",
+            "documentation_url":"http://docs.hapiseed.apiary.io/"
+        }      
+                
 ## Route Not Found [/foobar]
 
 ### Get Request [GET]

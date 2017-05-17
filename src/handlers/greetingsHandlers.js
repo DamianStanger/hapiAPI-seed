@@ -29,7 +29,7 @@ function setGreetings(request, reply) {
     return reply(greeting).code(300);
   }
 
-  greeting = JSON.parse(request.payload);
+  greeting = JSON.parse(JSON.stringify(request.payload));
   greeting.url = `${baseUrl}${greetingsRoot}/${greeting.language}`;
   greetings.push(greeting);
 
