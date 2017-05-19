@@ -1,4 +1,13 @@
-const greetingsHandlers = require("../../../src/handlers/greetingsHandlers");
+const greetings = [
+  {
+    "language": "en",
+    "greeting": "Hi there"
+  }, {
+    "language": "fr",
+    "greeting": "Bonjour"
+  }
+];
+const greetingsHandlers = require("../../../src/handlers/greetingsHandlers")(greetings);
 
 const Lab = require("lab");
 const Code = require("code");
@@ -15,19 +24,19 @@ describe("greetingsHandler => ", () => {
         "host": "myTestHost"
       }
     };
-    let greetings;
+    let actualGreetings;
     function reply(passedValue) {
-      greetings = passedValue;
+      actualGreetings = passedValue;
     }
 
     // Act
     greetingsHandlers.getGreetings(request, reply);
 
     // Assert
-    expect(greetings).to.be.an.instanceof(Array);
-    expect(greetings.length).to.equal(2);
-    expect(greetings[0].language).to.equal("en");
-    expect(greetings[0].url).to.equal("http://myTestHost/greetings/en");
+    expect(actualGreetings).to.be.an.instanceof(Array);
+    expect(actualGreetings.length).to.equal(2);
+    expect(actualGreetings[0].language).to.equal("en");
+    expect(actualGreetings[0].url).to.equal("http://myTestHost/greetings/en");
     done();
   });
 

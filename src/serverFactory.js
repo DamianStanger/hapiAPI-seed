@@ -2,7 +2,7 @@ const Hapi = require("hapi");
 const internals = require("./internals");
 const routes = require("./routes/indexRoutes");
 
-module.exports = function (callback) {
+module.exports = function () {
 
   const server = new Hapi.Server();
   server.connection({"port": internals.http.public.port, "labels": "public"});
@@ -26,5 +26,5 @@ module.exports = function (callback) {
     }
   });
 
-  callback(null, server);
+  return Promise.resolve({"error": null, server});
 };

@@ -1,6 +1,14 @@
-const greetingsHandlers = require("../handlers/greetingsHandlers");
 const greetingsRoot = "/greetings";
-
+const greetings = [
+  {
+    "language": "en",
+    "greeting": "Hi there"
+  }, {
+    "language": "fr",
+    "greeting": "Bonjour"
+  }
+];
+const greetingsHandlers = require("../handlers/greetingsHandlers")(greetings);
 
 const greetingsRouteGet = {
   "method": "GET",

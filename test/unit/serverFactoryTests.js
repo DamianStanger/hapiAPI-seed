@@ -9,10 +9,11 @@ const {describe, it} = lab;
 
 describe("", () => {
   it("", done => {
-    serverFactory((err, server) => {
-      expect(err).to.be.null();
-      expect(server).to.be.object();
-      done();
-    });
+    serverFactory()
+      .then(({error, server}) => {
+        expect(error).to.be.null();
+        expect(server).to.be.object();
+        done();
+      });
   });
 });
