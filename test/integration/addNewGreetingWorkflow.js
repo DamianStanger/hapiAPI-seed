@@ -18,8 +18,7 @@ describe("Integration - Add new greetings workflow => ", () =>
   it("Navigates the api to add a new greeting", done => {
 
     serverFactory()
-      .then(({error, server}) => {
-        expect(error).to.be.null();
+      .then(({server}) => {
         server.inject({"url": "/"})
           .then(response => {
             expect(response).to.be.a.object();
