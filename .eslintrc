@@ -146,7 +146,7 @@
     "id-length": [2,
       {
         "min": 2,
-        "max": 50,
+        "max": 60,
         "exceptions": ["i", "j", "k", "n", "Q"]
       }
     ],                                          // - this option enforces minimum and maximum identifier lengths (variable names, property names etc.) (off by default)
