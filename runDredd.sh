@@ -5,7 +5,7 @@ sleep 2
 PID=$!
 echo -e "\e[93mnode process is running with id: $PID"
 
-./node_modules/dredd/bin/dredd src/hapiseed-blueprint.apib http://localhost:1337
+./node_modules/dredd/bin/dredd hapiseed-blueprint.apib http://localhost:1337
 RESULT=$?
 echo -e "\e[93mdredd finished with result: $RESULT"
 

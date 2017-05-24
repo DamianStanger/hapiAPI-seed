@@ -10,48 +10,50 @@ based node api. Grunt tasks are configured to run linting and tests (Lab and Dre
 ### Install grunt on your system 
 `npm install -g grunt grunt-cli`
 
-### Run linting and all tests 
+### Run linting and all tests (unit, integration and dredd documentation tests)
 `grunt`
 
 ### Run it! 
-`node src/app.js`
-`grunt start`
+`node src/app.js` OR `grunt start` OR `npm start`
 
-### Environment Variables
-`export HAPIAPI_HTTPPUBLICPORT=8888`
-`export HAPIAPI_LOGGINGLEVELS=warn,error,fatal`
+## Configuration 
+### Via environment Variables
+The port listened to by hapi is configurable 
+`export HAPIAPI_HTTPPUBLICPORT=8888` (default 1337)
+`export HAPIAPI_LOGGINGLEVELS=warn,error,fatal` (default `debug,info,warn,error,fatal`)
 
-### Node command line options (node arguments will trump env variables)
-`node src/app.js http.public.port=8888`
-`node src/app.js logging.levels=warn,error,fatal`
+### Via node command line options (node arguments will trump env variables)
+`node src/app.js http.public.port=8888 logging.levels=warn,error,fatal`
 
 ## Docs
 API documentation can be found in the blueprint file `hapiseed-blueprint.apib`
-and can be found online at (http://hapiseed.apiary.io)
+and can be found online at [http://hapiseed.apiary.io]
 
 ## Tests
 There are 3 levels of testing within the project
 * Unit tests
-* End to end tests
+* Integration tests
 * API tests
 
-Unit and e2e both use Code and Lab as the testing framework. 
+Unit and Integration both use Code and Lab as the testing framework. 
 
-As you would expect 
-the unit tests focus on the single unit of code being the function within a module with most all dependencies mocked out.
+As you would expect the unit tests focus on the single unit of code being the function 
+within a module with most all dependencies mocked out.
 
-End to end tests again use Code and Lab and make use of Labs inject() functionality to test a fully functional api in memory.
+Integration tests again use Code and Lab and make use of Labs inject() functionality to 
+test a fully built api in memory with all dependencies in place.
 
-The API tests use Dredd and need a running instance of the API in order for the tests to be run.
+The API tests use a combination of blueprint and dredd. You need a running instance of 
+the API in order for the tests to be run.
 
 ### Unit and e2e tests (with Lab)
-`grunt test`
-`./node_modules/.bin/lab`
+`grunt test` OR `./node_modules/.bin/lab`
 
 ### API tests (with Dredd)
-`node src/app.js &`
-`./node_modules/dredd/bin/dredd src/hapiseed-blueprint.apib http://localhost:1337`
+Start the node app `node src/app.js &`
+Then run dredd `./node_modules/dredd/bin/dredd src/hapiseed-blueprint.apib http://localhost:1337`
 
-### Run all tests
-`npm test`
-`grunt testAll`
+OR use the batch file `./runDredd.sh`
+
+OR use grunt `grunt shell:dredd`
+`
