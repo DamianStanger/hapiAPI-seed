@@ -2,20 +2,27 @@ function siteIndex(request, reply) {
   const baseUrl = `http://${request.info.host}`;
 
   const responseObject = {
-    "base_url": baseUrl,
-    "greetings_url": `${baseUrl}/greetings`,
-    "documentation_url": "http://docs.hapiseed.apiary.io/"
+    "links": {
+      "self": baseUrl,
+      "greetings": `${baseUrl}/greetings`,
+      "documentation": "http://docs.hapiseed.apiary.io/"
+    }
   };
 
   return reply(responseObject);
 }
 
 function route404(request, reply) {
-  return reply({
-    "statusCode": 404,
-    "error": "Not Found",
-    "documentation_url": "http://docs.hapiseed.apiary.io/"
-  }).code(404);
+  return reply(
+    {
+      "links": {
+        "documentation": "http://docs.hapiseed.apiary.io/"
+      },
+      "errors": [{
+        "status": 404,
+        "title": "Resource not found"
+      }]
+    }).code(404);
 }
 
 const handlers = {

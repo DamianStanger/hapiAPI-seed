@@ -15,7 +15,14 @@ const {describe, it} = lab;
 describe("Integration - site root navigation tests => ", () =>
   it("returns the site root", done => {
     const request = {"url": "/"};
-    const expectedJsonObj = {"base_url": "http://localhost.localdomain:1337", "greetings_url": "http://localhost.localdomain:1337/greetings", "documentation_url": "http://docs.hapiseed.apiary.io/"};
+    const expectedJsonObj =
+      {
+        "links": {
+          "self": "http://localhost.localdomain:1337",
+          "greetings": "http://localhost.localdomain:1337/greetings",
+          "documentation": "http://docs.hapiseed.apiary.io/"
+        }
+      };
 
     serverFactory()
       .then(({error, server}) => {

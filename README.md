@@ -25,6 +25,10 @@ The port listened to by hapi is configurable
 ### Via node command line options (node arguments will trump env variables)
 `node src/app.js http.public.port=8888 logging.levels=warn,error,fatal`
 
+## API design
+The api follows the design as advocated by in the http://jsonapi.org/ spec following a HATEOS style.
+The root of the site returns an index page with links to all the other resources avaliable.
+
 ## Docs
 API documentation can be found in the blueprint file `hapiseed-blueprint.apib`
 and can be found online at [http://hapiseed.apiary.io]
@@ -56,4 +60,3 @@ Then run dredd `./node_modules/dredd/bin/dredd src/hapiseed-blueprint.apib http:
 OR use the batch file `./runDredd.sh`
 
 OR use grunt `grunt shell:dredd`
-`

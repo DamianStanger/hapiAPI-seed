@@ -90,9 +90,10 @@ describe("greetingsHandler => ", () => {
     // Assert
     expect(code).to.equal(404);
     expect(greeting).to.be.an.instanceof(Object);
-    expect(greeting.statusCode).to.equal(404);
-    expect(greeting.documentation_url).to.equal("http://docs.hapiseed.apiary.io/");
-    expect(greeting.error).to.equal("Not Found");
+    expect(greeting.links.documentation).to.equal("http://docs.hapiseed.apiary.io/");
+    expect(greeting.errors.length).to.equal(1);
+    expect(greeting.errors[0].status).to.equal(404);
+    expect(greeting.errors[0].title).to.equal("Resource not found");
     done();
   });
 });
