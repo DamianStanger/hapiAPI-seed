@@ -1,3 +1,5 @@
+const Joi = require("joi");
+
 const greetingsRoot = "/greetings";
 const greetings = [
   {
@@ -19,7 +21,17 @@ const greetingsRouteGet = {
 const greetingsRoutePost = {
   "method": "POST",
   "path": greetingsRoot,
-  "handler": greetingsHandlers.setGreetings
+  "handler": greetingsHandlers.setGreetings,
+  "config": {
+    "validate": {
+      "options": {
+        "stripUnknown": true
+      },
+      "payload": Joi.object().required().keys({
+        "language": Joi.string().required(),
+        "greeting": Joi.string().required()
+      })
+    }}
 };
 
 const greetingsLanguageRoute = {

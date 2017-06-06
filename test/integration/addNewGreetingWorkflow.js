@@ -12,7 +12,7 @@ const lab = exports.lab = Lab.script();
 const {expect} = Code;
 const {describe, it} = lab;
 
-describe("Integration - Add new greetings workflow => ", () =>
+describe("Integration - Add new greetings workflow =>", () => {
 
   it("Navigates the api to add a new greeting", done => {
 
@@ -38,5 +38,64 @@ describe("Integration - Add new greetings workflow => ", () =>
       })
       .then(done)
       .catch(done);
-  })
-);
+  });
+
+  describe("Validation =>", () => {
+
+    it("Fails when the greeting is missing", done => {
+      serverFactory()
+        .then(({server}) => {
+          return apiIndex(server).get()
+            .then(index => {
+              return index.greetings.post({"language": "us"});
+            })
+            .then(failure => {
+              expect(failure.statusCode).to.be.equal(400);
+              expect(failure.error).to.equal("Bad Request");
+              expect(failure.message).to.equal("child \"greeting\" fails because [\"greeting\" is required]");
+            });
+        })
+        .then(done)
+        .catch(done);
+    });
+
+    it("Fails when the language is missing", done => {
+      serverFactory()
+        .then(({server}) => {
+          return apiIndex(server).get()
+            .then(index => {
+              return index.greetings.post({"greeting": "Howdy there!"});
+            })
+            .then(failure => {
+              expect(failure.statusCode).to.be.equal(400);
+              expect(failure.error).to.equal("Bad Request");
+              expect(failure.message).to.equal("child \"language\" fails because [\"language\" is required]");
+            });
+        })
+        .then(done)
+        .catch(done);
+    });
+
+    it("Allows the inclusion of random payload keys, and strips them out", done => {
+      serverFactory()
+        .then(({server}) => {
+          return apiIndex(server).get()
+            .then(index => {
+              return index.greetings.post({"language": "us", "greeting": "Howdy there!", "foo": "bar", "one": {"two": 2}});
+            })
+            .then(greeting => {
+              expect(greeting.statusCode).to.be.equal(202);
+              expect(greeting.language).to.equal("us");
+              expect(greeting.greeting).to.equal("Howdy there!");
+              expect(greeting.url).to.equal("http://localhost.localdomain:1337/greetings/us");
+              expect(greeting.foo).to.be.undefined();
+              expect(greeting.one).to.be.undefined();
+            });
+        })
+        .then(done)
+        .catch(done);
+    });
+
+  });
+
+});
