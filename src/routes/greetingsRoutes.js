@@ -40,11 +40,17 @@ const greetingsLanguageRoute = {
   "handler": greetingsHandlers.getGreetingsLanguage
 };
 
+const greetingsLanguagePut = {
+  "method": "PUT",
+  "path": `${greetingsRoot}/{lang}`,
+  "handler": greetingsHandlers.putGreeting
+};
 
 const routes = [
   greetingsRouteGet,
   greetingsRoutePost,
-  greetingsLanguageRoute
+  greetingsLanguageRoute,
+  greetingsLanguagePut
 ];
 
 module.exports = routes;

@@ -1,3 +1,4 @@
+const Boom = require("boom");
 const {route404} = require("./indexHandlers");
 const greetingsRoot = "/greetings";
 
@@ -37,10 +38,16 @@ function routes(greetingsRepo) {
     return reply(greeting);
   }
 
+  function putGreeting(request, reply) {
+    const err = Boom.notImplemented("Still working on this");
+    return reply(err);
+  }
+
   return {
     getGreetings,
     setGreetings,
-    getGreetingsLanguage
+    getGreetingsLanguage,
+    putGreeting
   };
 }
 
