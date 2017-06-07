@@ -96,4 +96,24 @@ describe("greetingsHandler => ", () => {
     expect(greeting.errors[0].title).to.equal("Resource not found");
     done();
   });
+
+  it("putGreeting returns not implemented", done => {
+    // Arrange
+    const request = {};
+    let boom;
+    function reply(passedValue) {
+      boom = passedValue;
+    }
+
+    // Act
+    greetingsHandlers.putGreeting(request, reply);
+
+    // Assert
+    expect(boom).to.be.an.instanceof(Object);
+    expect(boom.isBoom).to.be.true();
+    expect(boom.output.statusCode).to.equal(501);
+    expect(boom.output.payload.error).to.equal("Not Implemented");
+    expect(boom.output.payload.message).to.equal("Still working on this");
+    done();
+  });
 });
