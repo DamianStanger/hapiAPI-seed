@@ -13,10 +13,10 @@ function routes(greetingsRepo) {
 
   function setGreetings(request, reply) {
     const baseUrl = `http://${request.info.host}`;
-    let greeting = greetingsRepo.find((greet => greet.language === request.params.lang));
+    let greeting = greetingsRepo.find((greet => greet.language === request.payload.language));
     if (greeting) {
       greeting.url = `${baseUrl}${greetingsRoot}/${greeting.language}`;
-      return reply(greeting).code(300);
+      return reply(Boom.conflict(`A greeting for the language '${greeting.language}' already exists`));
     }
 
     greeting = JSON.parse(JSON.stringify(request.payload));

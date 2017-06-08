@@ -97,6 +97,39 @@ describe("greetingsHandler => ", () => {
     done();
   });
 
+  it("setGreeting creates and returns the new greeting", done => {
+    // Arrange
+    const request = {
+      "info": {
+        "host": "myTestHost"
+      },
+      "params": {
+        "lang": "foobar"
+      },
+      "payload": {
+        "language": "oz",
+        "greeting": "guday."
+      }
+    };
+    function reply(passedValue) {
+      return {
+        "code"(code) {
+          passedValue.status = code;
+          return passedValue;
+        }
+      };
+    }
+
+    // Act
+    const replyValue = greetingsHandlers.setGreetings(request, reply);
+
+    // Assert
+    expect(replyValue).to.be.an.instanceof(Object);
+    expect(replyValue.status).to.equal(202);
+    expect(replyValue.language).to.equal("oz");
+    done();
+  });
+
   it("putGreeting returns not implemented", done => {
     // Arrange
     const request = {};

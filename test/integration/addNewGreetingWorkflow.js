@@ -83,13 +83,13 @@ describe("Integration - Add new greetings workflow =>", () => {
         .then(({server}) => {
           return apiIndex(server).get()
             .then(index => {
-              return index.greetings.post({"language": "us", "greeting": "Howdy there!", "foo": "bar", "one": {"two": 2}});
+              return index.greetings.post({"language": "gr", "greeting": "Guten tag", "foo": "bar", "one": {"two": 2}});
             })
             .then(greeting => {
               expect(greeting.statusCode).to.be.equal(202);
-              expect(greeting.language).to.equal("us");
-              expect(greeting.greeting).to.equal("Howdy there!");
-              expect(greeting.url).to.equal("http://localhost.localdomain:1337/greetings/us");
+              expect(greeting.language).to.equal("gr");
+              expect(greeting.greeting).to.equal("Guten tag");
+              expect(greeting.url).to.equal("http://localhost.localdomain:1337/greetings/gr");
               expect(greeting.foo).to.be.undefined();
               expect(greeting.one).to.be.undefined();
             });
