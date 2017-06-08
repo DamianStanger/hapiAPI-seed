@@ -1,6 +1,7 @@
 const Hapi = require("hapi");
 const internals = require("./internals");
 const routes = require("./routes/indexRoutes");
+const registerExtensions = require("./extensions/registerExtensions");
 
 module.exports = function () {
 
@@ -25,6 +26,8 @@ module.exports = function () {
       }
     }
   });
+
+  registerExtensions(server);
 
   return Promise.resolve({"error": null, server});
 };

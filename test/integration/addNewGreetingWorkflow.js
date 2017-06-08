@@ -51,8 +51,9 @@ describe("Integration - Add new greetings workflow =>", () => {
             })
             .then(failure => {
               expect(failure.statusCode).to.be.equal(400);
-              expect(failure.error).to.equal("Bad Request");
-              expect(failure.message).to.equal("child \"greeting\" fails because [\"greeting\" is required]");
+              expect(failure.errors[0].status).to.equal(400);
+              expect(failure.errors[0].error).to.equal("Bad Request");
+              expect(failure.errors[0].message).to.equal("child \"greeting\" fails because [\"greeting\" is required]");
             });
         })
         .then(done)
@@ -68,8 +69,9 @@ describe("Integration - Add new greetings workflow =>", () => {
             })
             .then(failure => {
               expect(failure.statusCode).to.be.equal(400);
-              expect(failure.error).to.equal("Bad Request");
-              expect(failure.message).to.equal("child \"language\" fails because [\"language\" is required]");
+              expect(failure.errors[0].status).to.equal(400);
+              expect(failure.errors[0].error).to.equal("Bad Request");
+              expect(failure.errors[0].message).to.equal("child \"language\" fails because [\"language\" is required]");
             });
         })
         .then(done)
