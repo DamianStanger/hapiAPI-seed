@@ -12,6 +12,9 @@ module.exports = function (grunt) {
       },
       "dredd": {
         "command": "./runDredd.sh"
+      },
+      "start": {
+        "command": "node ./src/server.js"
       }
     },
 
@@ -43,5 +46,9 @@ module.exports = function (grunt) {
   grunt.registerTask("testAll", [
     "test",
     "shell:dredd"
+  ]);
+
+  grunt.registerTask("start", [
+    "shell:start"
   ]);
 };

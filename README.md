@@ -14,7 +14,7 @@ based node api. Grunt tasks are configured to run linting and tests (Lab and Dre
 `grunt`
 
 ### Run it! 
-`node src/app.js` OR `grunt start` OR `npm start`
+`node src/server.js` OR `grunt start` OR `npm start`
 
 ## Configuration 
 ### Via environment Variables
@@ -23,7 +23,7 @@ The port listened to by hapi is configurable
 `export HAPIAPI_LOGGINGLEVELS=warn,error,fatal` (default `debug,info,warn,error,fatal`)
 
 ### Via node command line options (node arguments will trump env variables)
-`node src/app.js http.public.port=8888 logging.levels=warn,error,fatal`
+`node src/server.js http.public.port=8888 logging.levels=warn,error,fatal`
 
 ## API design
 The api follows the design as advocated by in the http://jsonapi.org/ spec following a HATEOS style.
@@ -54,7 +54,7 @@ the API in order for the tests to be run.
 `grunt test` OR `./node_modules/.bin/lab`
 
 ### API tests (with Dredd)
-Start the node app `node src/app.js &`
+Start the node app `node src/server.js &`
 Then run dredd `./node_modules/dredd/bin/dredd src/hapiseed-blueprint.apib http://localhost:1337`
 
 OR use the batch file `./runDredd.sh`

@@ -1,14 +1,14 @@
 {
-  "name": "hapi-seed",
+  "name": "hapiApi-seed",
   "version": "1.0.0",
-  "description": "a small seed web project to demo hapi with linting and testing baked in",
+  "description": "A small seed web project to demo hapi with linting and testing baked in",
   "main": "src/app.js",
   "engines": {
-    "node": "6.10.0",
-    "npm": "3.10.10"
+    "node": ">=6.10.0",
+    "npm": ">=3.10.10"
   },
   "scripts": {
-    "start": "node src/app.js",
+    "start": "node src/server.js",
     "test": "grunt"
   },
   "files": [
@@ -16,17 +16,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:DamianStanger/hapiAPI-seed.git"
   },
   "devDependencies": {
     "code": "^4.0.0",
     "dredd": "^3.4.5",
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.0.0",
-    "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-eslint": "^19.0.0",
-    "grunt-shell": "^1.3.0",
+    "grunt-shell": "^2.0.0",
     "lab": "^13.0.1",
     "load-grunt-tasks": "^3.5.0",
     "time-grunt": "^1.3.0"

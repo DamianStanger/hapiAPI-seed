@@ -1,6 +1,6 @@
 #!/bin/sh
 
-node src/app.js &
+node src/server.js &
 sleep 2
 PID=$!
 echo -e "\e[93mnode process is running with id: $PID"
